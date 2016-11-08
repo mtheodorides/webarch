@@ -2,7 +2,7 @@ var express = require('express')
 var app = express();
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('whatever.db');
+var db = new sqlite3.Database('blogs.db');
 
 /* Add a link to the db */
 app.get('/addLink', function(req, res){
