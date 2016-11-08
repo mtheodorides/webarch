@@ -4,6 +4,16 @@ var app = express();
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('whatever.db');
 
+/* Create table: should run only once */
+app.post('/blog', function(req, res) {
+	db.run("CREATE TABLE links (" +
+		"long_url varchar(255)," +
+		"short_url varchar(255)," +
+		"hit_count int)");
+
+	res.json({});	
+})
+
 /* Add a link to the db */
 app.get('/addLink', function(req, res){
     var long_url = req.query.long_url;
